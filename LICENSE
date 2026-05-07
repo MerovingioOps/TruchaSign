@@ -19,3 +19,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+ADDITIONAL TERMS FOR SECURITY RESEARCH TOOLS:
+
+This software is provided for authorized security research, red team exercises,
+penetration testing (with explicit scope), CTF competitions, and isolated
+laboratory environments ONLY.
+
+Unauthorized access to computer systems is illegal and violates the Computer
+Fraud and Abuse Act and similar laws in your jurisdiction. The authors assume
+no responsibility for misuse, damages, or unauthorized access resulting from
+this software.
+
+By using this software, you agree to use it only in authorized contexts and
+to comply with all applicable laws and regulations.
