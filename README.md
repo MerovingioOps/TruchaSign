@@ -162,7 +162,6 @@ See the [LICENSE](LICENSE) file for full details.
 
 ### 📞 Support & Contact
 
-- 📧 **Email:** [your-email@example.com]
 - 🐛 **Report Issues:** [GitHub Issues](https://github.com/merovingioops/TruchaSign/issues)
 - 💬 **Discussions:** [GitHub Discussions](https://github.com/merovingioops/TruchaSign/discussions)
 
@@ -325,7 +324,6 @@ Ver el archivo [LICENSE](LICENSE) para todos los detalles.
 
 ### 📞 Soporte y Contacto
 
-- 📧 **Correo:** [tu-email@ejemplo.com]
 - 🐛 **Reportar Problemas:** [GitHub Issues](https://github.com/merovingioops/TruchaSign/issues)
 - 💬 **Discusiones:** [GitHub Discussions](https://github.com/merovingioops/TruchaSign/discussions)
 
