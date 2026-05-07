@@ -11,7 +11,7 @@
 
 **TruchaSign** is an advanced tool for security research and authorized testing that clones Authenticode signature blocks from signed PE (Portable Executable) files and injects them into target binaries. It rewrites the `IMAGE_DIRECTORY_ENTRY_SECURITY` directory and recalculates the `CheckSum` in the Optional Header.
 
-> ⚠️ **Important:** The resulting PE appears signed at the presentation level (Windows Explorer, tools that only read the directory). However, the cryptographic signature chain **is NOT valid** — `signtool verify /pa` and `WinVerifyTrust` will reject the binary because the PE digest no longer matches the original CA signature.
+> ⚠️ **Important:** The resulting PE appears signed at the presentation level (Windows Explorer, tools that only read the directory). However, the cryptographic signature chain **is NOT valid** — `truchasignl verify /pa` and `WinVerifyTrust` will reject the binary because the PE digest no longer matches the original CA signature.
 
 ### ✨ Features
 
@@ -39,7 +39,7 @@ cd TruchaSign
 cargo build --release
 ```
 
-The optimized binary will be available at `target\release\signtoo.exe`.
+The optimized binary will be available at `target\release\truchasign.exe`.
 
 #### Using the Setup Script
 
@@ -71,10 +71,10 @@ Or simply run `.\tasks.ps1` to see all available options.
 
 ```powershell
 # Basic syntax
-.\target\release\signtoo.exe <signed_source.exe> <target.exe> <output.exe>
+.\target\release\truchasign.exe <signed_source.exe> <target.exe> <output.exe>
 
 # Example: Clone Windows cmd.exe signature to payload
-.\target\release\signtoo.exe C:\Windows\System32\cmd.exe .\payload.exe .\payload_signed.exe
+.\target\release\truchasign.exe C:\Windows\System32\cmd.exe .\payload.exe .\payload_signed.exe
 ```
 
 #### Expected Output
@@ -112,14 +112,14 @@ sigcheck.exe -i .\payload_signed.exe
 
 # Verify cryptographic chain fails (expected behavior)
 Get-AuthenticodeSignature .\payload_signed.exe
-signtool verify /pa .\payload_signed.exe
+truchasignl verify /pa .\payload_signed.exe
 ```
 
 ### ⚠️ Limitations
 
 - ❌ PE/PE32+ only (no other container formats)
 - ❌ Cannot reconstruct embedded certificates or catalogs
-- ❌ Cryptographic validation via `signtool` or `Get-AuthenticodeSignature` will fail (by design)
+- ❌ Cryptographic validation via `truchasignl` or `Get-AuthenticodeSignature` will fail (by design)
 - ❌ Does not handle corrupted PE structures
 
 ### 🤝 Contributing
@@ -174,7 +174,7 @@ See the [LICENSE](LICENSE) file for full details.
 
 **TruchaSign** es una herramienta avanzada para investigación de seguridad y pruebas autorizadas que clona bloques de firma Authenticode desde archivos PE (Portable Executable) firmados e los inyecta en binarios objetivo. Reescribe el directorio `IMAGE_DIRECTORY_ENTRY_SECURITY` y recalcula el `CheckSum` en el Optional Header.
 
-> ⚠️ **Importante:** El PE resultante aparenta estar firmado a nivel de presentación (Explorador de Windows, herramientas que solo leen el directorio). Sin embargo, la cadena de firma criptográfica **NO es válida** — `signtool verify /pa` y `WinVerifyTrust` rechazarán el binario porque el digest del PE ya no coincide con la firma original de la CA.
+> ⚠️ **Importante:** El PE resultante aparenta estar firmado a nivel de presentación (Explorador de Windows, herramientas que solo leen el directorio). Sin embargo, la cadena de firma criptográfica **NO es válida** — `truchasignl verify /pa` y `WinVerifyTrust` rechazarán el binario porque el digest del PE ya no coincide con la firma original de la CA.
 
 ### ✨ Características
 
@@ -202,7 +202,7 @@ cd TruchaSign
 cargo build --release
 ```
 
-El binario optimizado estará disponible en `target\release\signtoo.exe`.
+El binario optimizado estará disponible en `target\release\truchasign.exe`.
 
 #### Usar el Script de Configuración
 
@@ -234,10 +234,10 @@ O simplemente ejecuta `.\tasks.ps1` para ver todas las opciones disponibles.
 
 ```powershell
 # Sintaxis básica
-.\target\release\signtoo.exe <origen_firmado.exe> <objetivo.exe> <salida.exe>
+.\target\release\truchasign.exe <origen_firmado.exe> <objetivo.exe> <salida.exe>
 
 # Ejemplo: Clonar firma de cmd.exe a payload
-.\target\release\signtoo.exe C:\Windows\System32\cmd.exe .\payload.exe .\payload_signed.exe
+.\target\release\truchasign.exe C:\Windows\System32\cmd.exe .\payload.exe .\payload_signed.exe
 ```
 
 #### Salida Esperada
@@ -275,14 +275,14 @@ sigcheck.exe -i .\payload_signed.exe
 
 # Verificar que la cadena criptográfica falla (comportamiento esperado)
 Get-AuthenticodeSignature .\payload_signed.exe
-signtool verify /pa .\payload_signed.exe
+truchasignl verify /pa .\payload_signed.exe
 ```
 
 ### ⚠️ Limitaciones
 
 - ❌ Solo PE/PE32+ (no soporta otros formatos contenedores)
 - ❌ No reconstruye certificados embebidos ni catálogos
-- ❌ Validación criptográfica con `signtool` o `Get-AuthenticodeSignature` fallará (por diseño)
+- ❌ Validación criptográfica con `truchasignl` o `Get-AuthenticodeSignature` fallará (por diseño)
 - ❌ No maneja estructuras PE corruptas
 
 ### 🤝 Cómo Contribuir
